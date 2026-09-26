@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Moments — Sign In</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/global.css" />
+<link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+  <canvas id="particles" aria-hidden="true"></canvas>
+
+  <main class="login-stage">
+    <div class="lamp" aria-hidden="true">
+      <div class="lamp-cord"></div>
+      <div class="lamp-bulb"></div>
+      <div class="lamp-glow"></div>
+    </div>
+
+    <section class="glass-card login-card" id="loginCard">
+      <h1 class="serif login-title">Moments</h1>
+      <p class="text-muted login-sub" id="loginSub">Sign in to create something unforgettable</p>
+
+      <div class="channel-toggle" role="tablist" aria-label="Sign in or sign up">
+        <button type="button" class="channel-btn is-active" data-mode="signin" role="tab" aria-selected="true">Sign In</button>
+        <button type="button" class="channel-btn" data-mode="signup" role="tab" aria-selected="false">Sign Up</button>
+      </div>
+
+      <div id="nameField" class="is-hidden">
+        <label class="field-label" for="nameInput">Your name</label>
+        <input id="nameInput" class="field-input" type="text" autocomplete="name" placeholder="Your name" />
+      </div>
+
+      <label class="field-label" for="emailInput">Email address</label>
+      <input id="emailInput" class="field-input" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" />
+
+      <label class="field-label" for="passwordInput">Password</label>
+      <input id="passwordInput" class="field-input" type="password" autocomplete="current-password" placeholder="••••••••" />
+      <p class="text-muted field-hint" id="passwordHint"></p>
+
+      <p class="field-error" id="formError" role="alert"></p>
+
+      <button type="button" class="btn-primary" id="submitBtn">Sign In</button>
+      <button type="button" class="link-btn" id="forgotBtn">Forgot password?</button>
+
+      <p class="loading-row is-hidden" id="loadingRow"><span class="spinner" aria-hidden="true"></span> Please wait…</p>
+    </section>
+  </main>
+
+  <script type="module" src="js/login.page.js"></script>
+</body>
+</html>
