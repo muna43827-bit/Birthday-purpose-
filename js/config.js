@@ -25,6 +25,6 @@ export const SITE_URL = "https://yourusername.github.io/birthday-purpose";
 // Edge Function names (rarely need to change these)
 export const FUNCTIONS = {
   createMoment: "swift-service",
-  publishMoment: "publish-moment",
+  publishMoment: "rapid-worker",
   getMoment: "get-moment",
 };
