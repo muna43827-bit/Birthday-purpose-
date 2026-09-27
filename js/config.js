@@ -26,5 +26,5 @@ export const SITE_URL = "https://yourusername.github.io/birthday-purpose";
 export const FUNCTIONS = {
   createMoment: "swift-service",
   publishMoment: "rapid-worker",
-  getMoment: "get-moment",
+  getMoment: "rapid-api",
 };
