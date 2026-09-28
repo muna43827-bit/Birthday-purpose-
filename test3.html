@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test3</title>
+</head>
+<body style="font-family:sans-serif;padding:16px">
+<h3>Live check</h3>
+<canvas id="c" width="50" height="50" style="display:none"></canvas>
+<pre id="out" style="white-space:pre-wrap">running...</pre>
+<script type="module">
+const out = document.getElementById("out");
+let t = "";
+const log = s => { t += s + "\n"; out.textContent = t; };
+window.addEventListener("error", e => log("WINDOW ERROR: " + e.message));
+window.addEventListener("unhandledrejection", e => log("PROMISE ERROR: " + (e.reason && e.reason.message || e.reason)));
+const v = "?t=" + Date.now();
+try {
+  const p = await import("./js/particles.js" + v);
+  p.initParticles("c", { count: 3 });
+  log("1. particles OK");
+} catch (e) { log("1. particles FAIL: " + e.message); }
+try {
+  const cfg = await import("./js/config.js" + v);
+  log("2. config URL: " + cfg.SUPABASE_URL);
+  log("   key starts: " + cfg.SUPABASE_ANON_KEY.slice(0, 15));
+  log("   functions: " + JSON.stringify(cfg.FUNCTIONS));
+} catch (e) { log("2. config FAIL: " + e.message); }
+try {
+  const a = await import("./js/auth.js" + v);
+  const s = await a.getSession();
+  log("3. getSession OK, logged in: " + (s ? "yes" : "no"));
+  const r = await a.signIn("nobody@example.com", "wrongpass1");
+  log("4. signIn test: " + JSON.stringify(r).slice(0, 200));
+} catch (e) { log("3/4 FAIL: " + e.message); }
+log("done");
+</script>
+</body>
+  </html>
