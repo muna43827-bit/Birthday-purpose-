@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test</title>
+</head>
+<body style="font-family:sans-serif;padding:16px">
+<h3>File check</h3>
+<pre id="out" style="white-space:pre-wrap">checking...</pre>
+<script type="module">
+const files = ["config.js","security.js","particles.js","auth.js","login.page.js"];
+let text = "";
+for (const f of files) {
+  try {
+    const r = await fetch("./js/" + f);
+    text += f + " : HTTP " + r.status + "\n";
+  } catch (e) {
+    text += f + " : fetch error " + e.message + "\n";
+  }
+}
+for (const f of ["config.js","security.js","particles.js","auth.js"]) {
+  try { await import("./js/" + f); text += "import OK   " + f + "\n"; }
+  catch (e) { text += "import FAIL " + f + " : " + e.message + "\n"; }
+}
+document.getElementById("out").textContent = text;
+</script>
+</body>
+  </html>
