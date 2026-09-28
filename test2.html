@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test2</title>
+</head>
+<body style="font-family:sans-serif;padding:16px">
+<h3>Function check</h3>
+<pre id="out" style="white-space:pre-wrap">checking...</pre>
+<script type="module">
+const need = {
+  "auth.js": ["signIn","signUp","sendPasswordReset","getSession"],
+  "security.js": ["isValidEmail","isValidPassword","setText"],
+  "particles.js": ["initParticles"]
+};
+let t = "";
+for (const f in need) {
+  try {
+    const m = await import("./js/" + f);
+    const missing = need[f].filter(n => !(n in m));
+    t += f + " has: " + Object.keys(m).join(", ") + "\n";
+    t += missing.length ? "  MISSING: " + missing.join(", ") + "\n" : "  all good\n";
+  } catch (e) {
+    t += f + " FAIL: " + e.message + "\n";
+  }
+}
+document.getElementById("out").textContent = t;
+</script>
+</body>
+  </html>
