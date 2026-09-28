@@ -21,8 +21,8 @@ export function initParticles(canvasId, options = {}) {
 
   function resize() {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
-    width = canvas.clientWidth = window.innerWidth;
-    height = canvas.clientHeight = window.innerHeight;
+    width = window.innerWidth;
+    height = window.innerHeight;
     canvas.width = width * dpr;
     canvas.height = height * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
