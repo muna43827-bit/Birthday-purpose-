@@ -6,7 +6,7 @@ import { initParticles } from "./particles.js";
 initParticles("particles", { count: 46, color: "232, 200, 116", speed: 0.18 });
 
 getSession().then((session) => {
-  if (session) window.location.href = "/dashboard.html";
+  if (session) window.location.href = "dashboard.html";
 });
 
 const els = {
@@ -85,7 +85,7 @@ els.submitBtn.addEventListener("click", async () => {
       document.querySelector('[data-mode="signin"]').click();
       return;
     }
-    window.location.href = "/dashboard.html";
+    window.location.href = "dashboard.html";
     return;
   }
 
